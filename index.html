@@ -104,7 +104,7 @@
     }
     .monogram-wrap {
       position: relative;
-      width: min(76vw, 390px);
+      width: min(66vw, 390px);
       margin: 0 auto;
       aspect-ratio: 1;
     }
@@ -523,6 +523,10 @@
       .screen { padding: 48px; }
       .monogram-wrap { width: min(52vw, 420px); }
       .invitation-copy { font-size: 18px; }
+    }
+    @media (max-width: 380px) {
+      .invitation-nav { gap: 8px; padding-inline: 12px; }
+      .nav-links { flex-wrap: nowrap; gap: 8px; }
     }
     @media (prefers-reduced-motion: reduce) {
       .ambient-sparkle-depth {
