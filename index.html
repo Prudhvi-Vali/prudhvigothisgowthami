@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#4a0a0a">
+  <meta name="theme-color" content="#3B0A16">
   <meta name="description" content="Wedding invitation for Sai Prudhvi Valicherla and Gowthami Lakkoju.">
   <title>Sai Prudhvi Valicherla &amp; Gowthami Lakkoju — Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,12 +12,21 @@
   <style>
     :root {
       color-scheme: light;
-      --burgundy: #4a0a0a;
-      --silk: #fdf8f0;
-      --gold: #d4af37;
-      --deep-burgundy: linear-gradient(145deg, #240d0c, #120606 68%, #1b0908);
-      --espresso: #1a0a0a;
-      --body-copy: #2a2a2a;
+      /* Palette: Kumkum & Mango Leaf */
+      --burgundy: #6B0F24;        /* headings on light backgrounds */
+      --silk: #FFF9EE;            /* jasmine ivory */
+      --gold: #C9A24B;            /* antique zari gold */
+      --gold-light: #E8CF8A;
+      --gold-dark: #9A7424;
+      --deep-burgundy: linear-gradient(145deg, #3B0A16, #5C0F22 55%, #2C0711); /* wine-kumkum */
+      --espresso: #2B0A12;
+      --body-copy: #3A2428;
+      --sandal: #F6EAD6;          /* alternate section */
+      --blush: #FBE9E4;
+      --leaf: #2F6B4F;            /* mango-leaf green */
+      --leaf-tint: #E4EFE6;
+      --turmeric: #F2B632;
+      --rani: #C2185B;
       --font-heading: "Cormorant Garamond", "Playfair Display", Georgia, serif;
       --font-body: "Inter", "DM Sans", Arial, sans-serif;
       --font-script: "Great Vibes", cursive;
@@ -48,11 +57,11 @@
     .screen::before, .screen::after {
       position: absolute;
       inset: 18px;
-      border: 1px solid rgba(212, 175, 55, .3);
+      border: 1px solid rgba(201, 162, 75, .3);
       content: "";
       pointer-events: none;
     }
-    .screen::after { inset: 25px; border-color: rgba(212, 175, 55, .16); }
+    .screen::after { inset: 25px; border-color: rgba(201, 162, 75, .16); }
     .cover {
       text-align: center;
       isolation: isolate;
@@ -80,9 +89,9 @@
       display: block;
       width: calc(var(--sparkle-size) * 3.5);
       height: calc(var(--sparkle-size) * 3.5);
-      background: linear-gradient(145deg, #fff2bd 5%, #e3c66b 48%, #b68c1f 100%);
+      background: linear-gradient(145deg, #f7e7b8 5%, #e8cf8a 48%, #9a7424 100%);
       clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 94%, 50% 72%, 21% 94%, 32% 57%, 2% 35%, 39% 35%);
-      filter: drop-shadow(0 0 3px rgba(158, 119, 22, .5)) drop-shadow(0 0 8px rgba(212, 175, 55, .38));
+      filter: drop-shadow(0 0 3px rgba(154, 116, 36, .5)) drop-shadow(0 0 8px rgba(201, 162, 75, .38));
       animation: ambient-twinkle calc(var(--sparkle-duration) * .72) ease-in-out var(--sparkle-delay) infinite alternate;
     }
     @keyframes ambient-diagonal {
@@ -156,30 +165,30 @@
     }
     .orbit-trail ellipse {
       fill: none;
-      stroke: rgba(212, 175, 55, .62);
+      stroke: rgba(201, 162, 75, .62);
       stroke-width: 1.35;
       stroke-dasharray: 880;
       stroke-dashoffset: 880;
-      filter: drop-shadow(0 0 3px rgba(158, 119, 22, .42)) drop-shadow(0 0 7px rgba(212, 175, 55, .24));
+      filter: drop-shadow(0 0 3px rgba(154, 116, 36, .42)) drop-shadow(0 0 7px rgba(201, 162, 75, .24));
     }
     .orbit-trail .base-orbit {
-      stroke: rgba(212, 175, 55, .48);
+      stroke: rgba(201, 162, 75, .48);
       stroke-dasharray: none;
       stroke-dashoffset: 0;
       opacity: .8;
       transition: stroke 500ms ease, filter 500ms ease, opacity 500ms ease;
     }
     .orbit-trail .trail-p {
-      stroke: #fff2bd;
+      stroke: #f7e7b8;
       stroke-width: 1.8;
       opacity: 0.78;
-      filter: drop-shadow(0 0 4px rgba(212, 175, 55, .8)) drop-shadow(0 0 9px rgba(212, 175, 55, .48));
+      filter: drop-shadow(0 0 4px rgba(201, 162, 75, .8)) drop-shadow(0 0 9px rgba(201, 162, 75, .48));
     }
     .orbit-trail .trail-g {
-      stroke: #e3c66b;
+      stroke: #e8cf8a;
       stroke-width: 1.7;
       opacity: 0.72;
-      filter: drop-shadow(0 0 4px rgba(212, 175, 55, .65));
+      filter: drop-shadow(0 0 4px rgba(201, 162, 75, .65));
     }
     .light-dot {
       position: absolute;
@@ -188,8 +197,8 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: radial-gradient(circle, #fffbe6 0%, #d4af37 45%, #b68c1f 100%);
-      box-shadow: 0 0 7px 1px rgba(212,175,55,0.72), 0 0 15px 4px rgba(212,175,55,0.3);
+      background: radial-gradient(circle, #fbf1d6 0%, #c9a24b 45%, #9a7424 100%);
+      box-shadow: 0 0 7px 1px rgba(201,162,75,0.72), 0 0 15px 4px rgba(201,162,75,0.3);
       pointer-events: none;
       z-index: 4;
       opacity: 0;
@@ -204,7 +213,7 @@
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 247, 211, .48), rgba(212, 175, 55, .18) 35%, transparent 72%);
+      background: radial-gradient(circle, rgba(251, 241, 214, .48), rgba(201, 162, 75, .18) 35%, transparent 72%);
       opacity: 0;
       pointer-events: none;
     }
@@ -227,7 +236,7 @@
       100% { opacity: 0; transform: translate(-50%, -50%) scale(1.35); }
     }
     .monogram-wrap.is-traced .monogram-image {
-      filter: drop-shadow(0 0 18px rgba(212,175,55,0.35)) brightness(1.06);
+      filter: drop-shadow(0 0 18px rgba(201,162,75,0.35)) brightness(1.06);
       transition: filter 0.9s ease;
     }
     .sparkle-ring {
@@ -244,8 +253,8 @@
       width: var(--size, 4px);
       height: var(--size, 4px);
       border-radius: 50%;
-      background: #fff1bd;
-      box-shadow: 0 0 7px 2px rgba(212, 175, 55, .66);
+      background: #f7e7b8;
+      box-shadow: 0 0 7px 2px rgba(201, 162, 75, .66);
       opacity: 0;
       transform: rotate(var(--angle)) translateX(var(--radius, 165px));
     }
@@ -262,8 +271,8 @@
       animation: base-orbit-bloom 8.4s linear infinite;
     }
     .cover.is-opening .orbit-trail .base-orbit {
-      stroke: rgba(255, 226, 145, .92);
-      filter: drop-shadow(0 0 4px rgba(212, 175, 55, .72)) drop-shadow(0 0 11px rgba(212, 175, 55, .46));
+      stroke: rgba(232, 207, 138, .92);
+      filter: drop-shadow(0 0 4px rgba(201, 162, 75, .72)) drop-shadow(0 0 11px rgba(201, 162, 75, .46));
       opacity: 1;
     }
     .cover.is-hovered .orbit-trail .trail-p,
@@ -287,18 +296,18 @@
     }
     @keyframes base-orbit-bloom {
       0%, 74% {
-        stroke: rgba(212, 175, 55, .48);
-        filter: drop-shadow(0 0 3px rgba(158, 119, 22, .42)) drop-shadow(0 0 7px rgba(212, 175, 55, .24));
+        stroke: rgba(201, 162, 75, .48);
+        filter: drop-shadow(0 0 3px rgba(154, 116, 36, .42)) drop-shadow(0 0 7px rgba(201, 162, 75, .24));
         opacity: .8;
       }
       77%, 96% {
-        stroke: rgba(255, 226, 145, .92);
-        filter: drop-shadow(0 0 4px rgba(212, 175, 55, .72)) drop-shadow(0 0 11px rgba(212, 175, 55, .46));
+        stroke: rgba(232, 207, 138, .92);
+        filter: drop-shadow(0 0 4px rgba(201, 162, 75, .72)) drop-shadow(0 0 11px rgba(201, 162, 75, .46));
         opacity: 1;
       }
       100% {
-        stroke: rgba(212, 175, 55, .48);
-        filter: drop-shadow(0 0 3px rgba(158, 119, 22, .42)) drop-shadow(0 0 7px rgba(212, 175, 55, .24));
+        stroke: rgba(201, 162, 75, .48);
+        filter: drop-shadow(0 0 3px rgba(154, 116, 36, .42)) drop-shadow(0 0 7px rgba(201, 162, 75, .24));
         opacity: .8;
       }
     }
@@ -337,7 +346,7 @@
       padding: 12px clamp(20px, 5vw, 56px);
       background: var(--deep-burgundy);
       color: var(--silk);
-      box-shadow: 0 5px 20px rgba(26, 10, 10, .12);
+      box-shadow: 0 5px 20px rgba(43, 10, 18, .12);
     }
     .nav-monogram {
       flex: 0 0 auto;
@@ -371,7 +380,7 @@
       left: 50%;
       width: min(78%, 440px);
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(74, 10, 10, .28), transparent);
+      background: linear-gradient(90deg, transparent, rgba(107, 15, 36, .28), transparent);
       content: "";
       transform: translateX(-50%);
     }
@@ -421,13 +430,13 @@
       max-width: 420px;
       margin: 34px auto;
     }
-    .countdown-item { padding: 14px 4px 12px; border: 1px solid rgba(74, 10, 10, .18); background: rgba(255, 255, 255, .48); }
+    .countdown-item { padding: 14px 4px 12px; border: 1px solid rgba(107, 15, 36, .18); background: rgba(255, 255, 255, .48); }
     .countdown-value { display: block; color: var(--burgundy); font-family: var(--font-heading); font-size: clamp(24px, 5.5vw, 34px); font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
     .countdown-label { display: block; margin-top: 8px; color: var(--body-copy); font: 500 8.5px/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; }
     .event-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 auto 30px; }
     .event-detail {
       padding: 17px 12px;
-      border: 1px solid rgba(74, 10, 10, .16);
+      border: 1px solid rgba(107, 15, 36, .16);
       background: rgba(255, 255, 255, .52);
     }
     .event-detail-label, .venue-label {
@@ -444,7 +453,7 @@
       margin-top: 22px;
       padding: 24px;
       place-items: center;
-      border: 1px solid #b99527;
+      border: 1px solid #9a7424;
       background: var(--gold);
       text-decoration: none;
       color: var(--espresso);
@@ -453,10 +462,10 @@
       text-transform: uppercase;
       transition: color 180ms ease, background-color 180ms ease;
     }
-    .map-link:hover, .map-link:focus-visible { background: var(--burgundy); color: var(--silk); }
+    .map-link:hover, .map-link:focus-visible { background: var(--leaf); color: var(--silk); }
     .map-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
     .family-grid { display: grid; width: min(100%, 520px); grid-template-columns: minmax(0, 1fr); gap: 16px; margin: 32px auto 0; }
-    .family-card { padding: 26px 18px; border: 1px solid rgba(74, 10, 10, .18); background: rgba(255, 255, 255, .48); }
+    .family-card { padding: 26px 18px; border: 1px solid rgba(107, 15, 36, .18); background: rgba(255, 255, 255, .48); }
     .family-names { margin: 0; color: var(--espresso); font-family: var(--font-heading); font-size: clamp(19px, 3.5vw, 22px); font-weight: 500; line-height: 1.6; letter-spacing: -0.01em; }
     .family-group + .family-group { margin-top: 20px; }
     .family-relationship { margin: 0 0 5px; color: var(--burgundy); font: 500 9px/1.5 var(--font-body); letter-spacing: .14em; text-transform: uppercase; }
@@ -522,8 +531,8 @@
     .cover-inner { margin: 0 auto; }
     .cover .hero-couple { margin: clamp(14px, 3.5svh, 28px) auto 0; opacity: .8; transition: opacity .6s ease, filter .6s ease; }
     .heart-glow, .heart-ring { position: absolute; z-index: 0; opacity: 0; pointer-events: none; }
-    .heart-glow { inset: -28%; border-radius: 50%; background: radial-gradient(circle, rgba(255, 222, 140, .55) 0%, rgba(212, 175, 55, .24) 38%, transparent 68%); }
-    .heart-ring { inset: 6%; border-radius: 50%; border: 2px solid rgba(243, 221, 154, .75); }
+    .heart-glow { inset: -28%; border-radius: 50%; background: radial-gradient(circle, rgba(232, 207, 138, .55) 0%, rgba(201, 162, 75, .24) 38%, transparent 68%); }
+    .heart-ring { inset: 6%; border-radius: 50%; border: 2px solid rgba(232, 207, 138, .75); }
     .clue {
       max-width: min(100%, 560px);
       margin: clamp(18px, 3.5svh, 30px) auto 0;
@@ -568,7 +577,7 @@
     .cover.is-opening .heart-glow { animation: heart-glow-final calc(var(--open-duration) * .17) ease-out forwards; }
     .cover.is-opening .heart-ring { animation: heart-ring-strong calc(var(--open-duration) * .17) ease-out both; }
     .cover.is-opening .clue, .cover.is-opening .tap-hint { opacity: 0; transition-duration: calc(var(--open-duration) * .12); }
-    .cover.is-opening .hero-couple { opacity: 1; filter: drop-shadow(0 0 16px rgba(212, 175, 55, .45)); transition-delay: calc(var(--open-duration) * .66); }
+    .cover.is-opening .hero-couple { opacity: 1; filter: drop-shadow(0 0 16px rgba(201, 162, 75, .45)); transition-delay: calc(var(--open-duration) * .66); }
     .cover.is-opened .hero-couple { opacity: 1; }
     .cover.is-opened .clue, .cover.is-opened .tap-hint { visibility: hidden; }
     @keyframes heart-scale { 0%, 32%, 100% { transform: scale(1); } 6% { transform: scale(1.035); } 14% { transform: scale(1); } 22% { transform: scale(1.025); } }
@@ -583,7 +592,7 @@
     @keyframes heart-glow-final { 0% { opacity: .3; } 40% { opacity: 1; } 100% { opacity: .55; } }
     @keyframes heart-ring-strong { 0% { opacity: .8; transform: scale(.92); } 60%, 100% { opacity: 0; transform: scale(1.6); } }
     @keyframes clue-wiggle { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-7px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(3px); } }
-    @keyframes clue-flash { 0%, 100% { text-shadow: 0 1px 10px rgba(0, 0, 0, .45); } 40% { text-shadow: 0 0 16px rgba(243, 221, 154, .95); } }
+    @keyframes clue-flash { 0%, 100% { text-shadow: 0 1px 10px rgba(0, 0, 0, .45); } 40% { text-shadow: 0 0 16px rgba(232, 207, 138, .95); } }
     @keyframes tap-bob { 0%, 100% { transform: translateY(6px); } 40% { transform: translateY(-3px); } }
     @keyframes tap-ripple { 0%, 40% { opacity: 0; transform: scale(.4); } 50% { opacity: .9; } 100% { opacity: 0; transform: scale(2.6); } }
     @media (max-height: 480px) { .screen { padding-block: 16px; } .cover .hero-couple { margin-top: 10px; } }
@@ -610,6 +619,13 @@
       }
       .ambient-sparkle { animation: none; opacity: .55; }
     }
+    /* ---- Kumkum & Mango Leaf: section colour accents ---- */
+    #celebration { background: var(--sandal); }
+    .eyebrow, .event-detail-label, .venue-label, .countdown-label { color: var(--leaf); }
+    .countdown-item, .event-detail { background: rgba(228, 239, 230, .78); border-color: rgba(47, 107, 79, .24); }
+    .countdown-item { border-top-color: var(--turmeric); }
+    .family-card { background: rgba(251, 233, 228, .85); }
+    #invitation-heading span { color: var(--rani); }
   </style>
 </head>
 <body>
@@ -635,9 +651,9 @@
           <span class="sparkle-ring" id="sparkle-ring" aria-hidden="true"></span>
           <span class="tap-hint" id="tap-hint" aria-hidden="true">
             <svg viewBox="0 0 40 40" width="100%" fill="none">
-              <circle class="tap-ripple" cx="20" cy="20" r="6" fill="none" stroke="#f3dd9a" stroke-width="1.4"/>
-              <circle class="tap-ripple" cx="20" cy="20" r="6" fill="none" stroke="#f3dd9a" stroke-width="1.4" style="animation-delay: 0.6s"/>
-              <circle cx="20" cy="20" r="2.5" fill="#f3dd9a" opacity="0.9"/>
+              <circle class="tap-ripple" cx="20" cy="20" r="6" fill="none" stroke="#e8cf8a" stroke-width="1.4"/>
+              <circle class="tap-ripple" cx="20" cy="20" r="6" fill="none" stroke="#e8cf8a" stroke-width="1.4" style="animation-delay: 0.6s"/>
+              <circle cx="20" cy="20" r="2.5" fill="#e8cf8a" opacity="0.9"/>
             </svg>
           </span>
         </div>
