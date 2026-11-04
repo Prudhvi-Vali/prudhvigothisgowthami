@@ -1037,7 +1037,7 @@
         cover.classList.add("is-opened");
         unlockScroll();
         window.setTimeout(() => {
-          luxuryScrollToElement(invitationMessage, NAV_SCROLL_DURATION_MS);
+          invitationMessage.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
         }, 120);
         invitationHeading.focus({ preventScroll: true });
         musicToggle.classList.add("is-visible");
