@@ -496,13 +496,43 @@
       font-weight: 500;
     }
     .telugu-mantra {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
       font-family: var(--font-heading);
       font-style: italic;
       color: var(--burgundy);
       font-size: 1rem;
-      margin: 18px auto 10px;
-      line-height: 1.7;
-      letter-spacing: 0.04em;
+      margin: 22px auto 14px;
+      line-height: 1.8;
+      letter-spacing: 0.03em;
+      text-align: center;
+      max-width: 100%;
+      padding: 0 8px;
+      box-sizing: border-box;
+    }
+    .mantra-line {
+      display: block;
+      text-align: center;
+      text-wrap: balance;
+      line-height: 1.9;
+      white-space: normal;
+      word-break: keep-all;
+      overflow-wrap: normal;
+      max-width: 100%;
+    }
+    @media (max-width: 480px) {
+      .telugu-mantra {
+        font-size: clamp(12px, 3.6vw, 15px);
+        gap: 10px;
+        line-height: 2;
+        padding: 0 12px;
+      }
+      .mantra-line {
+        line-height: 2;
+        letter-spacing: 0.02em;
+      }
     }
     .invitation-page { font-family: var(--font-body); }
     .hero-couple { margin: 28px auto 0; text-align: center; }
@@ -626,7 +656,52 @@
     .countdown-item { border-top-color: var(--turmeric); }
     .family-card { background: rgba(251, 233, 228, .85); }
     #invitation-heading span { color: var(--rani); }
-  </style>
+  
+    /* ---- Wedding Music Toggle ---- */
+    .music-toggle {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 99;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      background: rgba(26, 10, 10, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.22), 0 0 0 1px rgba(212,175,55,0.18) inset;
+      transition: transform 220ms ease, background 220ms ease, border-color 220ms ease, opacity 220ms ease;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.86);
+    }
+    .music-toggle.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+    .music-toggle:hover {
+      background: rgba(36, 13, 12, 0.92);
+      border-color: var(--gold);
+      transform: scale(1.06);
+    }
+    .music-toggle:active { transform: scale(0.96); }
+    .music-toggle svg { width: 18px; height: 18px; display: block; }
+    .music-toggle .icon-pause, .music-toggle.is-playing .icon-music { display: none; }
+    .music-toggle.is-playing .icon-pause { display: block; }
+    .music-toggle.is-playing {
+      animation: music-pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes music-pulse {
+      0%, 100% { box-shadow: 0 4px 18px rgba(0,0,0,0.22), 0 0 0 1px rgba(212,175,55,0.18) inset; }
+      50% { box-shadow: 0 6px 22px rgba(0,0,0,0.28), 0 0 0 1px rgba(212,175,55,0.32) inset, 0 0 16px rgba(212,175,55,0.22); }
+    }
+    </style>
 </head>
 <body>
   <main>
@@ -676,7 +751,7 @@
       
       <section class="content-section" id="invitation-message" aria-labelledby="invitation-heading">
         <div class="section-inner">
-          <div class="telugu-invocation">॥ శ్రీ గణేశాయ నమః ॥ &nbsp;॥&nbsp; ఓం శ్రీ సాయిరామ్ &nbsp;॥&nbsp; శుభమస్తు ॥</div>
+          <div class="telugu-invocation">॥ శ్రీ గణేశాయ నమః ॥ &nbsp; ఓం శ్రీ సాయిరామ్ &nbsp;॥&nbsp; శుభమస్తు ॥</div>
           <p class="eyebrow">With joyful hearts</p>
           <h2 class="section-heading" id="invitation-heading" tabindex="-1">Sai Prudhvi Valicherla <span>&amp;</span> Gowthami Lakkoju</h2>
           <p class="invitation-copy">Together with our families, we warmly invite you to join us as we celebrate our wedding and begin a beautiful new chapter.</p>
@@ -690,8 +765,8 @@
           <hr class="gold-rule">
           <p class="event-date"><time datetime="2026-11-22T21:58:00+05:30">Sunday, November 22, 2026</time></p>
           <div class="telugu-mantra">
-            ॥ మాంగల్యం తంతునానేన మమ జీవన హేతునా ॥<br>
-            ॥ కంఠే బధ్నామి సుభగే త్వం జీవ శరదాం శతమ్ ॥
+            <span class="mantra-line">॥ మాంగల్యం తంతునానేన మమ జీవన హేతునా ॥</span>
+            <span class="mantra-line">॥ కంఠే బధ్నామి సుభగే త్వం జీవ శరదాం శతమ్ ॥</span>
           </div>
           <div class="countdown" aria-label="Countdown to the wedding">
             <div class="countdown-item"><span class="countdown-value" id="days">--</span><span class="countdown-label">Days</span></div>
@@ -758,10 +833,27 @@
       </section>
     </div>
   </main>
+  <!-- Wedding Background Music -->
+  <audio id="wedding-bg-music" loop preload="auto" playsinline>
+    <source src="./wedding_music.mp3.m4a" type="audio/mp4">
+  </audio>
+  <button id="music-toggle" class="music-toggle" aria-label="Play background music" aria-pressed="false" title="Play music">
+    <svg class="icon-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18V5l12-2v13"/>
+      <circle cx="6" cy="18" r="3"/>
+      <circle cx="18" cy="16" r="3"/>
+    </svg>
+    <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="7" y="5" width="3.5" height="14" rx="1.2" fill="currentColor" stroke="none"/>
+      <rect x="13.5" y="5" width="3.5" height="14" rx="1.2" fill="currentColor" stroke="none"/>
+    </svg>
+  </button>
   <script>
     (() => {
       const cover = document.querySelector("#cover");
       const openButton = document.querySelector("#open-invitation");
+      const music = document.querySelector("#wedding-bg-music");
+      const musicToggle = document.querySelector("#music-toggle");
       const image = document.querySelector(".monogram-image");
       const glowCanvas = document.querySelector("#gold-glow");
       const sparkleRing = document.querySelector("#sparkle-ring");
@@ -865,6 +957,28 @@
       let locked = false, opening = false, opened = false, beating = false;
       let lastNudge = -Infinity, hintTimer, trailTimer, touchX = 0, touchY = 0;
       const scrollBehavior = () => (reducedMotion.matches ? "auto" : "smooth");
+      function updateMusicButton() {
+        const isPlaying = !music.paused && !music.ended;
+        musicToggle.classList.toggle("is-playing", isPlaying);
+        musicToggle.setAttribute("aria-pressed", String(isPlaying));
+        musicToggle.setAttribute("aria-label", isPlaying ? "Pause background music" : "Play background music");
+        musicToggle.title = isPlaying ? "Pause music" : "Play music";
+      }
+      function playMusic() {
+        music.play().catch(error => {
+          if (error.name !== "NotAllowedError" && error.name !== "AbortError") {
+            console.error("Unable to play wedding background music.", error);
+          }
+        });
+      }
+      music.addEventListener("play", updateMusicButton);
+      music.addEventListener("pause", updateMusicButton);
+      music.addEventListener("ended", updateMusicButton);
+      music.addEventListener("error", () => console.error("Wedding background music could not be loaded.", music.error));
+      musicToggle.addEventListener("click", () => {
+        if (music.paused) playMusic();
+        else music.pause();
+      });
       function lockScroll() {
         if ("scrollRestoration" in history) history.scrollRestoration = "manual";
         window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -921,9 +1035,12 @@
         opened = true;
         cover.classList.remove("is-opening");
         cover.classList.add("is-opened");
-        unlockScroll(); // unlock first so the smooth scroll below works
-        invitationMessage.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
+        unlockScroll();
+        window.setTimeout(() => {
+          luxuryScrollToElement(invitationMessage, NAV_SCROLL_DURATION_MS);
+        }, 120);
         invitationHeading.focus({ preventScroll: true });
+        musicToggle.classList.add("is-visible");
       }
       function openInvitation() {
         if (opening) return;
@@ -931,6 +1048,7 @@
           invitationMessage.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
           return;
         }
+        playMusic();
         opening = true;
         window.clearTimeout(hintTimer);
         window.clearTimeout(trailTimer);
@@ -954,6 +1072,7 @@
       if (hashTarget) {
         opened = true;
         cover.classList.add("is-opened");
+        musicToggle.classList.add("is-visible");
       } else {
         lockScroll();
         window.addEventListener("load", () => {
