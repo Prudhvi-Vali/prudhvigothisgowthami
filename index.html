@@ -17,20 +17,16 @@
       --silk: #FFF9EE;            /* jasmine ivory */
       --gold: #C9A24B;            /* antique zari gold */
       --gold-light: #E8CF8A;
-      --gold-dark: #9A7424;
       --deep-burgundy: linear-gradient(145deg, #3B0A16, #5C0F22 55%, #2C0711); /* wine-kumkum */
       --espresso: #2B0A12;
       --body-copy: #3A2428;
       --sandal: #F6EAD6;          /* alternate section */
-      --blush: #FBE9E4;
       --leaf: #2F6B4F;            /* mango-leaf green */
-      --leaf-tint: #E4EFE6;
       --turmeric: #F2B632;
       --rani: #C2185B;
       --font-heading: "Cormorant Garamond", "Playfair Display", Georgia, serif;
       --font-body: "Inter", "DM Sans", Arial, sans-serif;
       --font-script: "Great Vibes", cursive;
-      --font-accent: "Playfair Display", Georgia, serif;
     }
     * { box-sizing: border-box; }
     html { min-width: 320px; background: var(--silk); scroll-behavior: smooth; }
@@ -66,6 +62,22 @@
       text-align: center;
       isolation: isolate;
       background: var(--deep-burgundy);
+    }
+    .cover-backdrop {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      display: block;
+      opacity: .4;
+      pointer-events: none;
+    }
+    .cover-backdrop img,
+    .content-section .section-bg img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
     .ambient-sparkles {
       position: absolute;
@@ -218,10 +230,10 @@
       pointer-events: none;
     }
     .monogram-wrap.is-tracing .light-dot {
-      animation: converge-at-center 2.8s cubic-bezier(.22, .72, .28, 1) both;
+      animation: converge-at-center 2.6s cubic-bezier(.22, .72, .28, 1) both;
     }
     .monogram-wrap.is-tracing .center-glow {
-      animation: center-bloom 1.6s ease-out 1.8s both;
+      animation: center-bloom 1.3s ease-out 1.3s both;
     }
     @keyframes converge-at-center {
       0% { left: calc(50% + var(--start-x)); opacity: 0; transform: translate(-50%, -50%) scale(.45); }
@@ -262,10 +274,10 @@
     .cover.is-opening .gold-glow { opacity: .92; }
     .cover.is-hovered .gold-glow { animation: gold-sweep 1.8s ease-in-out infinite alternate; }
     .monogram-wrap.is-tracing .orbit-trail .trail-p {
-      animation: orbit-draw 2.8s cubic-bezier(.4, 0, .2, 1) forwards;
+      animation: orbit-draw 2.6s cubic-bezier(.4, 0, .2, 1) forwards;
     }
     .monogram-wrap.is-tracing .orbit-trail .trail-g {
-      animation: orbit-draw 2.8s cubic-bezier(.4, 0, .2, 1) .25s forwards;
+      animation: orbit-draw 2.35s cubic-bezier(.4, 0, .2, 1) .25s forwards;
     }
     .cover.is-hovered .orbit-trail .base-orbit {
       animation: base-orbit-bloom 8.4s linear infinite;
@@ -421,8 +433,6 @@
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
     .event-date { margin: 0; color: var(--burgundy); font-family: var(--font-heading); font-size: clamp(22px, 4.5vw, 30px); font-weight: 500; letter-spacing: .02em; line-height: 1.2; }
-    .event-time { margin: 11px 0 0; color: var(--body-copy); font: 500 11px/1.6 "DM Sans", Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
-    .time-zone { font-size: .8em; letter-spacing: .08em; }
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -465,7 +475,7 @@
     .map-link:hover, .map-link:focus-visible { background: var(--leaf); color: var(--silk); }
     .map-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
     .family-grid { display: grid; width: min(100%, 520px); grid-template-columns: minmax(0, 1fr); gap: 16px; margin: 32px auto 0; }
-    .family-card { padding: 26px 18px; border: 1px solid rgba(107, 15, 36, .18); background: rgba(255, 255, 255, .48); }
+    .family-card { padding: 26px 18px; border: 1px solid rgba(74, 10, 10, .18); background: rgba(255, 255, 255, .48); }
     .family-names { margin: 0; color: var(--espresso); font-family: var(--font-heading); font-size: clamp(19px, 3.5vw, 22px); font-weight: 500; line-height: 1.6; letter-spacing: -0.01em; }
     .family-group + .family-group { margin-top: 20px; }
     .family-relationship { margin: 0 0 5px; color: var(--burgundy); font: 500 9px/1.5 var(--font-body); letter-spacing: .14em; text-transform: uppercase; }
@@ -559,7 +569,7 @@
     html.is-locked, html.is-locked body { overflow: hidden; overscroll-behavior: none; touch-action: none; }
     .cover { display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; -webkit-tap-highlight-color: transparent; }
     .cover-inner { margin: 0 auto; }
-    .cover .hero-couple { margin: clamp(14px, 3.5svh, 28px) auto 0; opacity: .8; transition: opacity .6s ease, filter .6s ease; }
+    .cover .hero-couple { position: relative; z-index: 1; margin: clamp(14px, 3.5svh, 28px) auto 0; opacity: .8; transition: opacity .6s ease, filter .6s ease; }
     .heart-glow, .heart-ring { position: absolute; z-index: 0; opacity: 0; pointer-events: none; }
     .heart-glow { inset: -28%; border-radius: 50%; background: radial-gradient(circle, rgba(232, 207, 138, .55) 0%, rgba(201, 162, 75, .24) 38%, transparent 68%); }
     .heart-ring { inset: 6%; border-radius: 50%; border: 2px solid rgba(232, 207, 138, .75); }
@@ -654,9 +664,8 @@
     .eyebrow, .event-detail-label, .venue-label, .countdown-label { color: var(--leaf); }
     .countdown-item, .event-detail { background: rgba(228, 239, 230, .78); border-color: rgba(47, 107, 79, .24); }
     .countdown-item { border-top-color: var(--turmeric); }
-    .family-card { background: rgba(251, 233, 228, .85); }
     #invitation-heading span { color: var(--rani); }
-  
+
     /* ---- Wedding Music Toggle ---- */
     .music-toggle {
       position: fixed;
@@ -701,11 +710,93 @@
       0%, 100% { box-shadow: 0 4px 18px rgba(0,0,0,0.22), 0 0 0 1px rgba(212,175,55,0.18) inset; }
       50% { box-shadow: 0 6px 22px rgba(0,0,0,0.28), 0 0 0 1px rgba(212,175,55,0.32) inset, 0 0 16px rgba(212,175,55,0.22); }
     }
+
+    /* ---- Invitation section backgrounds ---- */
+    .content-section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+    .content-section .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .content-section .section-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: block;
+      pointer-events: none;
+    }
+    #invitation-message .section-bg.temple {
+      opacity: 0.4;
+    }
+    #celebration .section-bg.mandapam {
+      opacity: 0.4;
+    }
+    #families .section-bg.family {
+      opacity: 0.4;
+    }
+    #families {
+      background: linear-gradient(180deg, var(--silk) 0%, var(--sandal) 100%);
+    }
+
+    /* ---- Mandapam palette: wine → crimson → amber with warm center glow ---- */
+    :root {
+      --mandap-sky: linear-gradient(180deg, #3b0a14 0%, #8a1c2b 60%, #d98b3a 100%);
+      --mandap-glow: radial-gradient(ellipse 60% 50% at 50% 55%,
+                       rgba(255, 210, 122, .7) 0%, rgba(255, 210, 122, 0) 70%);
+      --mandap-bg: var(--mandap-glow), var(--mandap-sky);
+    }
+
+    /* Page 1 (cover), Page 3 (celebration), Page 5 (blessing) */
+    .cover,
+    #celebration,
+    #blessing { background: var(--mandap-bg); }
+
+    /* Page 1: cover */
+    .cover .clue { text-shadow: 0 1px 14px rgba(59, 10, 20, .7); }
+    .cover .clue span { color: var(--gold-light); }
+
+    /* Page 3: celebration */
+    #celebration .section-heading,
+    #celebration .event-detail-value,
+    #celebration .countdown-value { color: var(--silk); }
+    #celebration .section-heading span,
+    #celebration .eyebrow,
+    #celebration .event-date,
+    #celebration .telugu-mantra,
+    #celebration .event-detail-label,
+    #celebration .venue-label,
+    #celebration .countdown-label { color: var(--gold-light); }
+    #celebration .countdown-item,
+    #celebration .event-detail {
+      background: rgba(59, 10, 20, .6);
+      border-color: rgba(232, 207, 138, .35);
+    }
+    #celebration .countdown-item { border-top-color: var(--turmeric); }
+    #celebration .map-link {
+      background: #3b0a14;
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    #celebration .map-link:hover,
+    #celebration .map-link:focus-visible { background: var(--gold); color: var(--espresso); }
+
+    /* Page 5: blessing */
+    #blessing .blessing,
+    #blessing .section-heading { text-shadow: 0 1px 14px rgba(59, 10, 20, .6); }
+    #blessing .back-to-top { color: var(--silk); }
+    #blessing .back-to-top:hover { color: var(--gold-light); }
     </style>
 </head>
 <body>
   <main>
     <section class="screen cover" id="cover" aria-label="Wedding invitation cover">
+      <picture class="cover-backdrop" aria-hidden="true">
+        <source srcset="./cover_page.avif" type="image/avif">
+        <img src="./cover_page-fallback.jpg" alt="" fetchpriority="high" decoding="async">
+      </picture>
       <div class="ambient-sparkles" id="ambient-sparkles" aria-hidden="true"></div>
       <div class="cover-inner">
         <div class="monogram-wrap">
@@ -750,6 +841,11 @@
       </nav>
       
       <section class="content-section" id="invitation-message" aria-labelledby="invitation-heading">
+        <picture class="section-bg temple" data-lazy-background aria-hidden="true">
+          <source data-srcset="./temple.avif" type="image/avif">
+          <img data-src="./temple-fallback.jpg" alt="" decoding="async">
+        </picture>
+
         <div class="section-inner">
           <div class="telugu-invocation">॥ శ్రీ గణేశాయ నమః ॥ &nbsp; ఓం శ్రీ సాయిరామ్ &nbsp;॥&nbsp; శుభమస్తు ॥</div>
           <p class="eyebrow">With joyful hearts</p>
@@ -759,6 +855,11 @@
         </div>
       </section>
       <section class="content-section" id="celebration" aria-labelledby="celebration-heading">
+        <picture class="section-bg mandapam" data-lazy-background aria-hidden="true">
+          <source data-srcset="./mandapam.avif" type="image/avif">
+          <img data-src="./mandapam-fallback.jpg" alt="" decoding="async">
+        </picture>
+
         <div class="section-inner">
           <p class="eyebrow">Please save the date</p>
           <h2 class="section-heading" id="celebration-heading">A day to <span>celebrate</span></h2>
@@ -790,6 +891,10 @@
         </div>
       </section>
       <section class="content-section" id="families" aria-labelledby="families-heading">
+        <picture class="section-bg family" data-lazy-background aria-hidden="true">
+          <source data-srcset="./family.avif" type="image/avif">
+          <img data-src="./family-fallback.jpg" alt="" decoding="async">
+        </picture>
         <div class="section-inner">
           <p class="eyebrow">Celebrating together</p>
           <h2 class="section-heading" id="families-heading">Our <span>families</span></h2>
@@ -861,11 +966,28 @@
         { element: document.querySelector("#ambient-sparkles"), count: 36, durationScale: 1.5 },
         { element: document.querySelector("#blessing-sparkles"), count: 28, durationScale: 1 }
       ];
+      const lazyBackgrounds = document.querySelectorAll("picture[data-lazy-background]");
+      function loadSectionBackground(picture) {
+        const source = picture.querySelector("source");
+        const background = picture.querySelector("img");
+        source.srcset = source.dataset.srcset;
+        background.src = background.dataset.src;
+        picture.removeAttribute("data-lazy-background");
+      }
+      function loadNearbySectionBackgrounds() {
+        if (root.classList.contains("is-locked")) return;
+        lazyBackgrounds.forEach(background => {
+          const bounds = background.getBoundingClientRect();
+          if (bounds.top <= window.innerHeight + 400 && bounds.bottom >= -400) {
+            loadSectionBackground(background);
+          }
+        });
+      }
+      window.addEventListener("scroll", loadNearbySectionBackgrounds, { passive: true });
       const invitationMessage = document.querySelector("#invitation-message");
       const invitationHeading = document.querySelector("#invitation-heading");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       const eventDate = new Date("2026-11-22T21:58:00+05:30");
-      let openingTimer;
       // ---- Tunable cover settings ----
       const OPEN_DURATION_MS = 3000;   // tap -> unlock
       const IDLE_HINT_MS = 7000;       // show the tapping hand if nothing happened
@@ -873,7 +995,7 @@
       const NUDGE_THROTTLE_MS = 1200;  // min gap between swipe nudges
       const NUDGE_MS = 1000;           // nudge animation length
       const TRAIL_START_MS = 600;
-      const TRAIL_MS = 3600;
+      const TRAIL_MS = 2600;
       const root = document.documentElement;
       root.style.setProperty("--open-duration", `${OPEN_DURATION_MS}ms`);
       root.style.setProperty("--beat-period", `${HEARTBEAT_MS}ms`);
@@ -1036,6 +1158,9 @@
         cover.classList.remove("is-opening");
         cover.classList.add("is-opened");
         unlockScroll();
+        const invitationBackground = invitationMessage.querySelector("picture[data-lazy-background]");
+        if (invitationBackground) loadSectionBackground(invitationBackground);
+        window.requestAnimationFrame(loadNearbySectionBackgrounds);
         window.setTimeout(() => {
           invitationMessage.scrollIntoView({ behavior: scrollBehavior(), block: "start" });
         }, 120);
@@ -1057,7 +1182,7 @@
         cover.classList.remove("is-hovered", "is-beating", "is-nudge");
         cover.classList.add("is-opening");
         if (navigator.vibrate && !reducedMotion.matches) navigator.vibrate(15);
-        openingTimer = window.setTimeout(finishOpening, reducedMotion.matches ? 0 : OPEN_DURATION_MS);
+        window.setTimeout(finishOpening, reducedMotion.matches ? 0 : OPEN_DURATION_MS);
       }
       image.addEventListener("load", createGoldGlow, { once: true });
       image.addEventListener("error", () => console.error("The optimized monogram image could not be loaded."), { once: true });
@@ -1086,6 +1211,7 @@
           hintTimer = window.setTimeout(() => { startHeartbeat(); revealHand(true); }, IDLE_HINT_MS);
         });
       }
+      window.requestAnimationFrame(loadNearbySectionBackgrounds);
       // Swipes, wheel and scroll keys are blocked while locked and only nudge.
       window.addEventListener("wheel", event => {
         if (!locked) return;
