@@ -68,7 +68,7 @@
     }
     .cover-backdrop {
       position: absolute;
-      z-index: 0;
+      z-index: 1;
       inset: 0;
       display: block;
       opacity: .4;
@@ -637,7 +637,6 @@
     /* ---- Kumkum & Mango Leaf: section colour accents ---- */
     .eyebrow, .event-detail-label { color: var(--leaf); }
     #invitation-heading span { color: var(--rani); }
-
     /* ---- Wedding Music Toggle ---- */
     .music-toggle {
       position: fixed;
@@ -682,7 +681,6 @@
       0%, 100% { box-shadow: 0 4px 18px rgba(0,0,0,0.22), 0 0 0 1px rgba(212,175,55,0.18) inset; }
       50% { box-shadow: 0 6px 22px rgba(0,0,0,0.28), 0 0 0 1px rgba(212,175,55,0.32) inset, 0 0 16px rgba(212,175,55,0.22); }
     }
-
     /* ---- Invitation section backgrounds ---- */
     .content-section {
       position: relative;
@@ -712,7 +710,6 @@
     #families {
       background: linear-gradient(180deg, var(--silk) 0%, var(--sandal) 100%);
     }
-
     /* ---- Mandapam palette: wine → crimson → amber with warm center glow ---- */
     :root {
       --mandap-sky: linear-gradient(180deg, #3b0a14 0%, #8a1c2b 60%, #d98b3a 100%);
@@ -720,30 +717,25 @@
                        rgba(255, 210, 122, .7) 0%, rgba(255, 210, 122, 0) 70%);
       --mandap-bg: var(--mandap-glow), var(--mandap-sky);
     }
-
     /* Page 3 (celebration) */
     #celebration { background: var(--mandap-bg); }
-
     /* Page 1: cover */
     .cover .clue { text-shadow: 0 1px 14px rgba(59, 10, 20, .7); }
     .cover .clue span { color: var(--gold-light); }
-
     /* Page 1: cover — keep the monogram on deep wine (gold-on-dark), amber only as a faint ember */
     .cover {
       background:
         radial-gradient(ellipse 55% 45% at 50% 52%, rgba(255, 210, 122, .14) 0%, rgba(255, 210, 122, 0) 70%),
         linear-gradient(180deg, #3b0a14 0%, #6e1424 55%, #8a1c2b 82%, #a8501f 100%);
     }
-
     /* Page 5: blessing — same dark-first treatment so the small gold text and stars stay readable */
     #blessing {
       background:
         radial-gradient(ellipse 55% 45% at 50% 52%, rgba(255, 210, 122, .08) 0%, rgba(255, 210, 122, 0) 70%),
         linear-gradient(180deg, #3b0a14 0%, #6e1424 55%, #8a1c2b 82%, #a8501f 100%);
     }
-    #blessing .eyebrow,
-    #blessing .telugu-invocation { color: var(--gold-light) !important; } /* !important: invocation colour is set inline in the HTML */
-
+    #blessing .eyebrow { color: var(--gold-light); }
+    #blessing .telugu-invocation { color: var(--gold); }
     /* Page 3: celebration */
     #celebration .section-heading,
     #celebration .event-detail-value,
@@ -755,6 +747,13 @@
     #celebration .event-detail-label,
     #celebration .venue-label,
     #celebration .countdown-label { color: var(--gold-light); }
+    #celebration .telugu-mantra {
+      padding: 12px 16px;
+      border: 1px solid rgba(232, 207, 138, .35);
+      border-radius: 12px;
+      background: rgba(43, 10, 18, .72);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .2);
+    }
     #celebration .countdown-item,
     #celebration .event-detail {
       background: rgba(59, 10, 20, .6);
@@ -768,19 +767,65 @@
     }
     #celebration .map-link:hover,
     #celebration .map-link:focus-visible { background: var(--gold); color: var(--espresso); }
-
     /* Page 5: blessing */
     #blessing .blessing,
     #blessing .section-heading { text-shadow: 0 1px 14px rgba(59, 10, 20, .6); }
     #blessing .back-to-top { color: var(--silk); }
     #blessing .back-to-top:hover { color: var(--gold-light); }
+
+    /* ---- Mobile background fix: prevent cut-off on narrow viewports ---- */
+    .cover-backdrop, .content-section .section-bg {
+      height: 100%;
+      min-height: 100%;
+    }
+    .cover-backdrop img,
+    .content-section .section-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 768px) {
+      .screen.cover {
+        min-height: 100dvh;
+        min-height: 100svh;
+      }
+      .content-section {
+        min-height: 94dvh;
+        min-height: 94svh;
+        padding: clamp(56px, 9vh, 88px) 20px;
+      }
+      /* Focal-point adjustments so key art stays in frame on 9:19 screens */
+      .cover-backdrop img {
+        object-position: 50% 18%;
+      }
+      #invitation-message .section-bg.temple img {
+        object-position: 50% 22%;
+      }
+      #celebration .section-bg.mandapam img {
+        object-position: 50% 28%;
+      }
+      #families .section-bg.family img {
+        object-position: 50% 12%;
+      }
+    }
+    @media (max-width: 480px) {
+      .cover-backdrop img { object-position: 50% 12%; }
+      #invitation-message .section-bg.temple img { object-position: 50% 18%; }
+      #celebration .section-bg.mandapam img { object-position: 50% 22%; }
+      #families .section-bg.family img { object-position: 50% 8%; }
+    }
+    /* Optional: if you create portrait crops, use them via <picture> media queries.
+       Example:
+       <source media="(max-width: 700px)" srcset="./temple-mobile.avif" type="image/avif">
+    */
     </style>
 </head>
 <body>
   <main>
     <section class="screen cover" id="cover" aria-label="Wedding invitation cover">
       <picture class="cover-backdrop" aria-hidden="true">
-        <source srcset="./cover_page.avif" type="image/avif">
+        <source media="(max-width: 700px)" srcset="./cover_page_mobile.jpg" type="image/jpeg">
+        <source srcset="./cover_page.avif?v=2" type="image/avif">
         <img src="./cover_page-fallback.jpg" alt="" fetchpriority="high" decoding="async">
       </picture>
       <div class="ambient-sparkles" id="ambient-sparkles" aria-hidden="true"></div>
@@ -828,10 +873,10 @@
       
       <section class="content-section" id="invitation-message" aria-labelledby="invitation-heading">
         <picture class="section-bg temple" data-lazy-background aria-hidden="true">
+          <source media="(max-width: 700px)" data-srcset="./temple_mobile.jpg" type="image/jpeg">
           <source data-srcset="./temple.avif" type="image/avif">
           <img data-src="./temple-fallback.jpg" alt="" decoding="async">
         </picture>
-
         <div class="section-inner">
           <div class="telugu-invocation" lang="te">॥ శ్రీ గణేశాయ నమః ॥ &nbsp; ఓం శ్రీ సాయిరామ్ &nbsp;॥&nbsp; శుభమస్తు ॥</div>
           <p class="eyebrow">With joyful hearts</p>
@@ -842,10 +887,10 @@
       </section>
       <section class="content-section" id="celebration" aria-labelledby="celebration-heading">
         <picture class="section-bg mandapam" data-lazy-background aria-hidden="true">
+          <source media="(max-width: 700px)" data-srcset="./mandapam_mobile.jpg" type="image/jpeg">
           <source data-srcset="./mandapam.avif" type="image/avif">
           <img data-src="./mandapam-fallback.jpg" alt="" decoding="async">
         </picture>
-
         <div class="section-inner">
           <p class="eyebrow">Please save the date</p>
           <h2 class="section-heading" id="celebration-heading">A day to <span>celebrate</span></h2>
@@ -878,6 +923,7 @@
       </section>
       <section class="content-section" id="families" aria-labelledby="families-heading">
         <picture class="section-bg family" data-lazy-background aria-hidden="true">
+          <source media="(max-width: 700px)" data-srcset="./family_mobile.jpg" type="image/jpeg">
           <source data-srcset="./family.avif" type="image/avif">
           <img data-src="./family-fallback.jpg" alt="" decoding="async">
         </picture>
@@ -914,7 +960,7 @@
       <section class="content-section" id="blessing" aria-labelledby="blessing-heading">
         <div class="ambient-sparkles" id="blessing-sparkles" aria-hidden="true"></div>
         <div class="section-inner">
-          <div class="telugu-invocation" lang="te" style="color: var(--gold);">॥ శుభమస్తు ॥</div>
+          <div class="telugu-invocation" lang="te">॥ శుభమస్తు ॥</div>
           <p class="eyebrow">With warm gratitude</p>
           <h2 class="section-heading" id="blessing-heading">A blessing for <span>our journey</span></h2>
           <p class="blessing">May our life together be filled with love, laughter, and kindness, surrounded by the warmth of family and friends. We look forward to sharing this moment with you.</p>
@@ -954,9 +1000,10 @@
       ];
       const lazyBackgrounds = document.querySelectorAll("picture[data-lazy-background]");
       function loadSectionBackground(picture) {
-        const source = picture.querySelector("source");
         const background = picture.querySelector("img");
-        source.srcset = source.dataset.srcset;
+        picture.querySelectorAll("source[data-srcset]").forEach(source => {
+          source.srcset = source.dataset.srcset;
+        });
         background.src = background.dataset.src;
         picture.removeAttribute("data-lazy-background");
       }
