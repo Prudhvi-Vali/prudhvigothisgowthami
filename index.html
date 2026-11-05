@@ -44,24 +44,13 @@
     button { font: inherit; }
     .screen {
       position: relative;
-      display: grid;
       min-height: 100svh;
-      place-items: center;
       overflow: hidden;
       padding: 30px 20px;
     }
-    .screen::before, .screen::after {
-      position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(201, 162, 75, .3);
-      content: "";
-      pointer-events: none;
-    }
-    .screen::after { inset: 25px; border-color: rgba(201, 162, 75, .16); }
     .cover {
       text-align: center;
       isolation: isolate;
-      background: var(--deep-burgundy);
     }
     .cover-backdrop {
       position: absolute;
@@ -86,8 +75,6 @@
       overflow: hidden;
       pointer-events: none;
     }
-    #blessing { overflow: hidden; }
-    #blessing .section-inner { position: relative; z-index: 1; }
     .ambient-sparkle-depth {
       position: absolute;
       width: 1px;
@@ -119,7 +106,6 @@
       position: relative;
       z-index: 1;
       width: min(100%, 540px);
-      margin: auto;
     }
     .monogram-wrap {
       position: relative;
@@ -399,7 +385,6 @@
     .section-inner { width: min(100%, 640px); margin: auto; }
     .eyebrow {
       margin: 0 0 17px;
-      color: var(--burgundy);
       font: 500 10px/1.5 var(--font-body);
       letter-spacing: .28em;
       text-transform: uppercase;
@@ -440,18 +425,16 @@
       max-width: 420px;
       margin: 34px auto;
     }
-    .countdown-item { padding: 14px 4px 12px; border: 1px solid rgba(107, 15, 36, .18); background: rgba(255, 255, 255, .48); }
+    .countdown-item { padding: 14px 4px 12px; border: 1px solid rgba(107, 15, 36, .18); }
     .countdown-value { display: block; color: var(--burgundy); font-family: var(--font-heading); font-size: clamp(24px, 5.5vw, 34px); font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
-    .countdown-label { display: block; margin-top: 8px; color: var(--body-copy); font: 500 8.5px/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; }
+    .countdown-label { display: block; margin-top: 8px; font: 500 8.5px/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; }
     .event-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 auto 30px; }
     .event-detail {
       padding: 17px 12px;
       border: 1px solid rgba(107, 15, 36, .16);
-      background: rgba(255, 255, 255, .52);
     }
     .event-detail-label, .venue-label {
       margin: 0 0 8px;
-      color: var(--burgundy);
       font: 500 10px/1.5 var(--font-body);
       letter-spacing: .2em;
       text-transform: uppercase;
@@ -480,9 +463,8 @@
     .family-group + .family-group { margin-top: 20px; }
     .family-relationship { margin: 0 0 5px; color: var(--burgundy); font: 500 9px/1.5 var(--font-body); letter-spacing: .14em; text-transform: uppercase; }
     .blessing { max-width: 520px; margin: 0 auto 30px; color: var(--silk); font-family: var(--font-heading); font-size: clamp(17px, 3.5vw, 20px); font-weight: 400; font-style: italic; line-height: 1.75; letter-spacing: 0.01em; }
-    #blessing { background: var(--deep-burgundy); }
     #blessing .section-heading { color: var(--silk); }
-    #blessing .section-heading span, #blessing .eyebrow { color: var(--gold); }
+    #blessing .section-heading span { color: var(--gold); }
     #blessing.content-section::before { background: linear-gradient(90deg, transparent, var(--gold), transparent); }
     .back-to-top {
       display: inline-block;
@@ -495,8 +477,6 @@
     }
     .back-to-top:hover { color: var(--espresso); }
     .back-to-top:focus-visible { outline: 2px solid var(--burgundy); outline-offset: 5px; }
-    #blessing .back-to-top { color: var(--gold); }
-    #blessing .back-to-top:hover { color: var(--silk); }
     .telugu-invocation {
       font-family: var(--font-heading);
       color: var(--burgundy);
@@ -660,10 +640,7 @@
       .ambient-sparkle { animation: none; opacity: .55; }
     }
     /* ---- Kumkum & Mango Leaf: section colour accents ---- */
-    #celebration { background: var(--sandal); }
-    .eyebrow, .event-detail-label, .venue-label, .countdown-label { color: var(--leaf); }
-    .countdown-item, .event-detail { background: rgba(228, 239, 230, .78); border-color: rgba(47, 107, 79, .24); }
-    .countdown-item { border-top-color: var(--turmeric); }
+    .eyebrow, .event-detail-label { color: var(--leaf); }
     #invitation-heading span { color: var(--rani); }
 
     /* ---- Wedding Music Toggle ---- */
@@ -749,14 +726,28 @@
       --mandap-bg: var(--mandap-glow), var(--mandap-sky);
     }
 
-    /* Page 1 (cover), Page 3 (celebration), Page 5 (blessing) */
-    .cover,
-    #celebration,
-    #blessing { background: var(--mandap-bg); }
+    /* Page 3 (celebration) */
+    #celebration { background: var(--mandap-bg); }
 
     /* Page 1: cover */
     .cover .clue { text-shadow: 0 1px 14px rgba(59, 10, 20, .7); }
     .cover .clue span { color: var(--gold-light); }
+
+    /* Page 1: cover — keep the monogram on deep wine (gold-on-dark), amber only as a faint ember */
+    .cover {
+      background:
+        radial-gradient(ellipse 55% 45% at 50% 52%, rgba(255, 210, 122, .14) 0%, rgba(255, 210, 122, 0) 70%),
+        linear-gradient(180deg, #3b0a14 0%, #6e1424 55%, #8a1c2b 82%, #a8501f 100%);
+    }
+
+    /* Page 5: blessing — same dark-first treatment so the small gold text and stars stay readable */
+    #blessing {
+      background:
+        radial-gradient(ellipse 55% 45% at 50% 52%, rgba(255, 210, 122, .08) 0%, rgba(255, 210, 122, 0) 70%),
+        linear-gradient(180deg, #3b0a14 0%, #6e1424 55%, #8a1c2b 82%, #a8501f 100%);
+    }
+    #blessing .eyebrow,
+    #blessing .telugu-invocation { color: var(--gold-light) !important; } /* !important: invocation colour is set inline in the HTML */
 
     /* Page 3: celebration */
     #celebration .section-heading,
@@ -811,8 +802,8 @@
             <ellipse class="trail-p" cx="250" cy="250" rx="220" ry="166"></ellipse>
             <ellipse class="trail-g" cx="250" cy="250" rx="220" ry="166"></ellipse>
           </svg>
-          <span class="light-dot p-dot" id="p-dot" aria-hidden="true"></span>
-          <span class="light-dot g-dot" id="g-dot" aria-hidden="true"></span>
+          <span class="light-dot p-dot" aria-hidden="true"></span>
+          <span class="light-dot g-dot" aria-hidden="true"></span>
           <span class="center-glow" aria-hidden="true"></span>
           <span class="sparkle-ring" id="sparkle-ring" aria-hidden="true"></span>
           <span class="tap-hint" id="tap-hint" aria-hidden="true">
