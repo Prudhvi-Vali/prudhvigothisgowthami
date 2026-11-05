@@ -472,7 +472,16 @@
     .map-link:hover, .map-link:focus-visible { background: var(--leaf); color: var(--silk); }
     .map-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
     .family-grid { display: grid; width: min(100%, 520px); grid-template-columns: minmax(0, 1fr); gap: 16px; margin: 32px auto 0; }
-    .family-card { padding: 26px 18px; border: 1px solid rgba(74, 10, 10, .18); background: rgba(255, 255, 255, .48); }
+    .family-card {
+      padding: 26px 18px;
+      border: 1px solid rgba(107, 15, 36, .28);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .48);
+      box-shadow:
+        0 4px 18px rgba(43, 10, 18, .12),
+        0 0 18px rgba(107, 15, 36, .18),
+        0 0 0 1px rgba(107, 15, 36, .08) inset;
+    }
     .family-names { margin: 0; color: var(--espresso); font-family: var(--font-heading); font-size: clamp(19px, 3.5vw, 22px); font-weight: 500; line-height: 1.6; letter-spacing: -0.01em; }
     .family-group + .family-group { margin-top: 20px; }
     .family-relationship { margin: 0 0 5px; color: var(--burgundy); font: 500 9px/1.5 var(--font-body); letter-spacing: .14em; text-transform: uppercase; }
@@ -750,14 +759,23 @@
     #celebration .telugu-mantra {
       padding: 12px 16px;
       border: 1px solid rgba(232, 207, 138, .35);
-      border-radius: 12px;
       background: rgba(43, 10, 18, .72);
-      box-shadow: 0 4px 18px rgba(0, 0, 0, .2);
     }
     #celebration .countdown-item,
     #celebration .event-detail {
       background: rgba(59, 10, 20, .6);
       border-color: rgba(232, 207, 138, .35);
+    }
+    #celebration .telugu-mantra,
+    #celebration .countdown-item,
+    #celebration .event-detail,
+    #celebration .map-link {
+      border-radius: 12px;
+      border-color: rgba(232, 207, 138, .62);
+      box-shadow:
+        0 4px 18px rgba(0, 0, 0, .2),
+        0 0 20px rgba(212, 175, 55, .4),
+        0 0 0 1px rgba(232, 207, 138, .18) inset;
     }
     #celebration .countdown-item { border-top-color: var(--turmeric); }
     #celebration .map-link {
